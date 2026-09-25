@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MineHost — Minecraft Hosting</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#0b0a12;color:#eee}
+.app{display:flex;min-height:100vh}.side{width:245px;background:#11101a;border-right:1px solid #292633;padding:22px 16px}
+.logo{font-size:22px;font-weight:800;margin:4px 10px 28px}.logo span{color:#a970ff}
+.nav{display:block;padding:12px 13px;margin:5px 0;border-radius:10px;color:#aaa;text-decoration:none;cursor:pointer}.nav.active,.nav:hover{background:#24183a;color:#fff}
+.user{position:absolute;bottom:18px;width:210px;background:#181621;border:1px solid #2a2734;border-radius:12px;padding:12px;font-size:13px}.dot{display:inline-block;width:9px;height:9px;background:#55d68a;border-radius:50%;margin-right:7px}
+main{flex:1;padding:30px;max-width:1300px;margin:auto;width:100%}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+h1{margin:0;font-size:28px}.sub{color:#8f8b9d;margin-top:6px}.btn{border:0;border-radius:10px;padding:11px 16px;background:#8d52e8;color:#fff;font-weight:700;cursor:pointer}.btn:hover{background:#a36af3}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#13121b;border:1px solid #292633;border-radius:15px;padding:20px}.server{grid-column:span 2}.server-head{display:flex;justify-content:space-between;align-items:center}.server-name{font-size:20px;font-weight:800}.status{color:#5ddd91;font-size:13px}.ip{background:#0d0c13;padding:10px;border-radius:8px;color:#aaa;margin:15px 0;font-family:monospace}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:#181720;padding:13px;border-radius:10px}.stat b{display:block;font-size:18px;margin-top:5px}.console{margin-top:16px;background:#09090d;border-radius:10px;padding:14px;height:180px;overflow:auto;font-family:monospace;font-size:12px;color:#b9b5c5}.green{color:#62e49a}.purple{color:#b786ff}.muted{color:#777384}
+.section{display:none}.section.active{display:block}
+table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:13px;border-bottom:1px solid #282532}th{color:#999}
+input{width:100%;padding:12px;background:#0e0d14;border:1px solid #302c3b;border-radius:9px;color:white;margin:8px 0 15px}
+@media(max-width:800px){.side{width:70px}.logo{font-size:0}.logo span{font-size:22px}.nav{font-size:0;text-align:center}.nav:first-letter{font-size:20px}.user{display:none}.grid{grid-template-columns:1fr}.server{grid-column:span 1}main{padding:18px}.top{gap:10px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="logo">Mine<span>Host</span></div>
+<a class="nav active" data-page="dashboard">▣ &nbsp; Панель</a>
+<a class="nav" data-page="servers">▤ &nbsp; Серверы</a>
+<a class="nav" data-page="files">▱ &nbsp; Файлы</a>
+<a class="nav" data-page="settings">⚙ &nbsp; Настройки</a>
+<div class="user"><span class="dot"></span> Онлайн<br><small class="muted">admin@example.com</small></div>
+</aside>
+
+<main>
+<section id="dashboard" class="section active">
+<div class="top"><div><h1>Панель управления</h1><div class="sub">Добро пожаловать в MineHost</div></div><button class="btn" onclick="alert('Сервер запускается...')">▶ Запустить</button></div>
+<div class="grid">
+<div class="card server">
+<div class="server-head"><div><div class="server-name">My Survival Server</div><div class="sub">Minecraft 1.21.4 • Paper</div></div><div class="status">● ONLINE</div></div>
+<div class="ip">play.example.net:25565</div>
+<div class="stats"><div class="stat">Игроки<b>7 / 50</b></div><div class="stat">CPU<b>23%</b></div><div class="stat">RAM<b>3.2 / 8 GB</b></div></div>
+<div class="console"><span class="green">[09:54:21] Server is running</span><br>[09:54:26] Player Steve joined the game<br>[09:54:31] Loaded 12 plugins<br><span class="purple">[09:55:02] MineHost console ready.</span><br><span class="muted">_</span></div>
+</div>
+<div class="card"><h3>Статистика</h3><p class="sub">Аптайм</p><h2>14д 06ч</h2><p class="sub">Последний запуск</p><b>Сегодня, 08:41</b></div>
+<div class="card"><h3>Быстрые действия</h3><button class="btn" style="width:100%;margin:5px 0" onclick="alert('Перезапуск')">↻ Перезапустить</button><button class="btn" style="width:100%;margin:5px 0" onclick="alert('Консоль')">⌁ Открыть консоль</button></div>
+</div>
+</section>
+
+<section id="servers" class="section">
+<div class="top"><div><h1>Серверы</h1><div class="sub">Ваши Minecraft-серверы</div></div><button class="btn" onclick="alert('Здесь можно добавить сервер')">+ Добавить</button></div>
+<div class="card"><table><tr><th>Сервер</th><th>Версия</th><th>Статус</th><th>Онлайн</th></tr><tr><td>My Survival Server</td><td>1.21.4 Paper</td><td class="status">● Online</td><td>7 / 50</td></tr></table></div>
+</section>
+
+<section id="files" class="section">
+<div class="top"><div><h1>Файлы</h1><div class="sub">My Survival Server</div></div><button class="btn" onclick="alert('Выбор файла')">↑ Загрузить</button></div>
+<div class="card"><table><tr><th>Название</th><th>Тип</th><th>Размер</th></tr><tr><td>📁 plugins</td><td>Папка</td><td>—</td></tr><tr><td>📄 server.properties</td><td>Конфигурация</td><td>4 KB</td></tr><tr><td>📄 paper.yml</td><td>Конфигурация</td><td>12 KB</td></tr><tr><td>📄 world.zip</td><td>Архив</td><td>1.8 GB</td></tr></table></div>
+</section>
+
+<section id="settings" class="section">
+<div class="top"><div><h1>Настройки</h1><div class="sub">Настройки аккаунта и сервера</div></div></div>
+<div class="card"><h3>Сервер</h3><label>Название</label><input value="My Survival Server"><label>IP сервера</label><input value="play.example.net"><label>Лимит игроков</label><input value="50" type="number"><button class="btn" onclick="alert('Настройки сохранены')">Сохранить</button></div>
+</section>
+</main>
+</div>
+<script>
+document.querySelectorAll('.nav').forEach(n=>n.onclick=()=>{
+ document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
+ n.classList.add('active'); document.getElementById(n.dataset.page).classList.add('active');
+});
+</script>
+</body>
+</html>
